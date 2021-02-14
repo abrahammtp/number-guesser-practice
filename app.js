@@ -32,6 +32,18 @@ UIguessBtn.addEventListener("click", function() {
     if(isNaN(guess) || guess < min || guess > max) {
         setMessage(`Please enter a number between ${min} and ${max}.`, "green");
     }
+
+    // Check if the user won
+    if(guess === winningNumber) {
+        // Disable input field
+        UIguessInput.disabled = true;
+        // Make border green to show they have won
+        UIguessInput.style.borderColor = "green";
+        // Let user know they have won
+        setMessage(`${winningNumber} is correct. Congratulations!`, "green");
+    } else {
+
+    }
 });
 
 // Set message
