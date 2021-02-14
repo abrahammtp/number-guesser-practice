@@ -17,10 +17,25 @@ const UIgame = document.querySelector("#game"),
       UIminNum = document.querySelector(".min-num"),
       UImaxNum = document.querySelector(".max-num"),
       UIguessBtn = document.querySelector("#guess-btn"),
-      UIguessImput = document.querySelector("#guess-input"),
+      UIguessInput = document.querySelector("#guess-input"),
       UImessage = document.querySelector(".message");
 
 // Assign UI min and max numbers
 UIminNum.textContent = min;
 UImaxNum.textContent = max;
 
+// Listen for guess
+UIguessBtn.addEventListener("click", function() {
+    let guess = parseInt(UIguessInput.value);
+    console.log(guess);
+    // Validate input
+    if(isNaN(guess) || guess < min || guess > max) {
+        setMessage(`Please enter a number between ${min} and ${max}.`, "green");
+    }
+});
+
+// Set message
+function setMessage(msg, color) {
+    UImessage.style.color = color;
+    UImessage.textContent = msg;
+};
